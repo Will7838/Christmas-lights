@@ -1,4 +1,4 @@
-# Christmas-lights
+# Christmas Light Tutorial
 This is tutorial on how I made my Christmas light display in 2019, video here: https://www.youtube.com/watch?v=S6fs69brKvg.
 
 ### Software required
