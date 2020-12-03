@@ -30,6 +30,10 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 - Maybe a soldering iron
 - Multimeter
 
+### Knowledge required
+- Basic electronics
+- Basic computer knowledge
+
 ### Initial steps
 ##### Planning
 - Plan your display, figure out how many 'dumb' and 'smart' lights you're going to use.
@@ -44,3 +48,11 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 ##### Setting up Vixen
 1. Start Vixen
 2. Click "Setup Display"
+
+##### Setting up the pixel strip
+1. Connect the pixel strips together using the clip
+2. Connect the data pin (the middle one) to the arduino (pin 11 in the script)
+3. Connect the positive pins to the 5v supply (red I think) on the PSU
+4. Connect the negative pins to the black wires on the PSU
+5. Turn on the PSU
+
