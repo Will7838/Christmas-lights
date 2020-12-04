@@ -77,4 +77,18 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 *NOTE: You need to run a length of wire from the center of the pixel strip (meaning the point where the two sets join together) back to the PSU and connect it to the same + and - terminals as you did for the + and - pins at the start of the strip. The wires inside of the pixel strip are very small and if you don't add a "power boost" in the middle of the strip, the pixels at the end furtherest from the PSU end up a bit dim.*
 5. Connect a wire from the negative terminal on the PSU to the ground on the arduino.
 
+### Setting up other lights
+*There's no straight forward way of setting up the non-pixel lights because they're all a bit different. I'll put a general guide here, and also a troubleshooting guide below with things to try if you get weird/bad results.*
+1. Plug all mosfets into the breadboard.
+*MOSFET Pins - Hold the mosfet so you're looking at the text. (Mosfets are what make the lights fade in and out, they are controlled by the arduino).  
+__LEFT LEG__: The control pin (aka the gate)  
+__MIDDLE LEG__: The output pin (aka the drain)  
+__RIGHT LEG__: The input pin (aka the source)  *
 
+**__NOTE__: The mosfet source must be fed from the negative wire coming from the power supply, and the drain must feed the negative wire going to the lights. THE POSITIVE WIRE HAS NOTHING TO DO WITH THE MOSFET AND DOESN'T HAVE ANYTHING TO DO WITH IT.  **
+
+2. All of the input pins also need to be joined together and connected to the ground on the arduino. This is easiest to do with a second small breadboard.
+3. All of the lights go through a mosfet except for the multicoloured lights (which go on the bush), and the two sets of rope lights.
+4. The warm white lights have their own power supply which plugs into the wall. The rest come out of the 3.3v supply from the PSU (I think it's the orange wire). 
+
+**If things aren't working or they're acting weird, you can try adding a 10Kohm resister between the gate and the drain or the gate and the source. Just find something that works, it might be different for each lights. Another thing to note: some of the mosfets work better than others for some unknown reason, so if the lights are very dim when they should be off, try changing the mosfet, or adding a 10kohm resistor somewhere, and make sure the source is connected to a common ground with the other sources on the arduino.**
