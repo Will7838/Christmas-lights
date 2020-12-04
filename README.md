@@ -47,8 +47,27 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 6. If it worked, yay! If it didn't, start googling.
 
 ### Setting up Vixen
+*NOTE: I have uploaded my config file here. If that's all you need you can just download and load that, if you want to know how I made it, follow the steps below.*
 1. Start Vixen
 2. Click "Setup Display"
+*On the left-hand side:*
+3. Add "Single Item" and try and name it appropriately
+4. Click 'No' if it asks about a dimming curve
+5. Select "They are a single color..."
+6. Rinse and repeat step 3-5 for as many non-pixel lights as you have (12 for me)
+7. Add a "Pixel grid", with dimensions Height=1, Width=300 and orientation horizontal
+8. Select "No" dimming curve
+9. Select "They can be any color.."
+*On the right hand side:*
+10. Add a "generic serial" controller
+11. Set # of outputs to 912
+12. Click on the name of the controller and click the cog down the bottom
+13. Click "setup/change serial port", set it to whatever port the arduino is on (go to device manager on windows to find out), set a baud rate of 1048576, parity none
+14. Click OK, then select "Send a text header", and in the text box type ">>300<<" (without the ""). Click OK.
+15. On the left hand side, select the group of pixels. On the right hand side, using shift, select output 1-900. Click "Patch Elements".
+16. On the left hadn side, using shift, select the non-pixel elements (12 in my case), and on the right hand side select output 901-912. Click "Patch Elements".
+17. Click "OK". That should be all you have to do to set up vixen, however every time you reconnect the arduino you'll probably have to come back here, click on the controller name, click the cog and change the serial port.
+
 
 ### Setting up the pixel strip
 1. Connect both of the pixel strips together
@@ -56,4 +75,6 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 3. Connect the positive pins from the pixel strip to the 5v supply (red wires) on the PSU
 4. Connect the negative pins to the black wires on the PSU
 *NOTE: You need to run a length of wire from the center of the pixel strip (meaning the point where the two sets join together) back to the PSU and connect it to the same + and - terminals as you did for the + and - pins at the start of the strip. The wires inside of the pixel strip are very small and if you don't add a "power boost" in the middle of the strip, the pixels at the end furtherest from the PSU end up a bit dim.*
+5. Connect a wire from the negative terminal on the PSU to the ground on the arduino.
+
 
