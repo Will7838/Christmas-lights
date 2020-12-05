@@ -10,7 +10,8 @@ This is tutorial on how I made my Christmas light display in 2019, video here: h
 - At least 8gb RAM
 - At least 2 cpu cores
 
-NOTE: When using vixen and when running your show, I would suggest stopping all unneccesary background and foreground applications to help out vixen, especially if you've got an older laptop.
+NOTE: When using vixen and when running your show, I would suggest stopping all unneccesary background and foreground applications to help out vixen, especially if you've got an older laptop.  
+I would also suggest optimising your laptop for performance. This means disabling power savers, disabling system sounds, turning off wifi + bluetooth during a show.
 
 ### Hardware required
 - Arduino Mega + appropriate USB cable
@@ -44,16 +45,16 @@ NOTE: When using vixen and when running your show, I would suggest stopping all 
 3. Go to Tools > Board > Select 'Arduino Mega or Mega 2560'
 4. Go to Tools > Port > Select which ever one seems to make sense, or just guess until it works
 5. Click the Upload button
-6. If it worked, yay! If it didn't, start googling.
+6. If it worked, yay! If it didn't, start googling and try copy-pasting any errors you find into the search bar.
 
 ### Setting up Vixen
-*NOTE: I have uploaded my config file here. If that's all you need you can just download and load that, if you want to know how I made it, follow the steps below.*
+*NOTE: I have uploaded my config file here, called 'CL2020_profile'. If that's all you need you can just download and load that, if you want to know how I made it, follow the steps below.*
 1. Start Vixen
 2. Click "Setup Display"
 *On the left-hand side:*
 3. Add "Single Item" and try and name it appropriately
 4. Click 'No' if it asks about a dimming curve
-5. Select "They are a single color..."
+5. Select "They are a single color ... (change the colour to be white)"
 6. Rinse and repeat step 3-5 for as many non-pixel lights as you have (12 for me)
 7. Add a "Pixel grid", with dimensions Height=1, Width=300 and orientation horizontal
 8. Select "No" dimming curve
@@ -85,10 +86,12 @@ __LEFT LEG__: The control pin (aka the gate)
 __MIDDLE LEG__: The output pin (aka the drain)  
 __RIGHT LEG__: The input pin (aka the source)  *
 
-**__NOTE__: The mosfet source must be fed from the negative wire coming from the power supply, and the drain must feed the negative wire going to the lights. THE POSITIVE WIRE HAS NOTHING TO DO WITH THE MOSFET AND DOESN'T HAVE ANYTHING TO DO WITH IT.  **
+**__NOTE__: The mosfet source must be fed from the negative wire coming from the power supply, and the drain must feed the negative wire going to the lights. THE POSITIVE WIRE HAS NOTHING TO DO WITH THE MOSFET.  **
 
 2. All of the input pins also need to be joined together and connected to the ground on the arduino. This is easiest to do with a second small breadboard.
-3. All of the lights go through a mosfet except for the multicoloured lights (which go on the bush), and the two sets of rope lights.
+3. All of the lights go through a mosfet except for the multicoloured lights (which go on the bush), and the two sets of rope lights. They go on a relay (see step 5).
 4. The warm white lights have their own power supply which plugs into the wall. The rest come out of the 3.3v supply from the PSU (I think it's the orange wire). 
+5. Connect the relay board to the 5v supply on the PSU (the arduino does has a 5v output however it often isn't enough to drive a lot of relays). Connect the ground to something.
+6. Connect pin 1, 2 and 3 on the relay board to pin 22, 23 and 24 on the arduino.
 
-**If things aren't working or they're acting weird, you can try adding a 10Kohm resister between the gate and the drain or the gate and the source. Just find something that works, it might be different for each lights. Another thing to note: some of the mosfets work better than others for some unknown reason, so if the lights are very dim when they should be off, try changing the mosfet, or adding a 10kohm resistor somewhere, and make sure the source is connected to a common ground with the other sources on the arduino.**
+**If things aren't working or they're acting weird, you can try adding a 10Kohm resister between the gate and the drain or the gate and the source. Just find something that works, it might be different for each lights. Another thing to note: some of the mosfets work better than others for some unknown reason, so if the lights are very dim when they should be off, try changing the mosfet, or adding a 10kohm resistor somewhere, and make sure the source is connected to a common ground with the other sources on the arduino. If all else fails, just use relays instead of mosfets, they're much simpler.**
